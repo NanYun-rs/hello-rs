@@ -54,4 +54,6 @@ fn main() {
     while w <= 5 {
         w += 1
     }
+
+    // loop
 }

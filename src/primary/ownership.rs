@@ -1,3 +1,12 @@
+pub fn takes_ownership(some_string: String) {
+    // some_string 进入作用域
+    println!("{}", some_string);
+} // 这里，some_string 移出作用域并调用 `drop` 方法。占用的内存被释放Ø
+
+pub fn makes_copy(some_integer: i32) {
+    // some_integer 进入作用域
+    println!("{}", some_integer);
+}
 fn main() {
     // String 可变长度类型 存放在堆上
     // String 类型是一个复杂类型，由存储在栈中的堆指针、字符串长度、字符串容量共同组成，
@@ -18,21 +27,12 @@ fn main() {
     println!("s1,s2,{},{}", s1, s2);
 
     let m = String::from("ship move");
-
     takes_ownership(m);
+
+    // takes_ownership(m);
     // 所有权转移到 takes_ownership 无法在后续的代码里面访问
     // println!("move m {}",m);
 
     let m1 = 123;
     makes_copy(m1);
-}
-
-fn takes_ownership(some_string: String) {
-    // some_string 进入作用域
-    println!("{}", some_string);
-} // 这里，some_string 移出作用域并调用 `drop` 方法。占用的内存被释放
-
-fn makes_copy(some_integer: i32) {
-    // some_integer 进入作用域
-    println!("{}", some_integer);
 }
